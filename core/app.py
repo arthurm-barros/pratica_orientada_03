@@ -110,7 +110,8 @@ def login():
 
     if not email:
         flash('Insira seu email para fazer login', 'erro')
-        return redirect(url_for('login'))
+        return render_template('login.html')
+        # return redirect(url_for('login'))
     if not senha:
         flash('Insira sua senha para fazer login', 'erro')
         return redirect(url_for('login'))

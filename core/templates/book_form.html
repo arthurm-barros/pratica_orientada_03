@@ -7,11 +7,15 @@
 
     <form method="post">
         <label for="titulo">Título do livro:</label>
-        <input type="text" id="titulo" name="titulo" required>
+        <input type="text" id="titulo" name="titulo">
 
         <br><br>
 
         <button type="submit">Cadastrar livro</button>
     </form>
+
+    {% for message in get_flashed_messages() %}
+        <p style="color: red;">{{ message }}</p>
+    {% endfor %}
 
 {% endblock %}
