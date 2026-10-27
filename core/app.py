@@ -75,7 +75,7 @@ def new_book():
         livro_novo = Book(titulo=titulo, usuario_id=int(session['usuario_id']))
         _session.add(livro_novo)
         _session.commit()
-        return redirect(url_for("new_book"))
+        return redirect(url_for("listar_livros"))
 
     return render_template("book_form.html", usuario=session['usuario_nome'])
 
