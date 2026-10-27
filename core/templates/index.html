@@ -8,12 +8,6 @@
 
 {% block content %}
     <header>
-        <h1>Início</h1>
-        <a href="{{ url_for('listar_livro') }}">Livros</a>
-        {% if usuario %}
-            <a href="{{ url_for('logout') }}">Sair</a>
-            {% else %}
-            <a href="{{ url_for('login') }}">Entrar</a>
-        {% endif %}
+        <h1>Bem-vindo</h1>
     </header>
 {% endblock %}

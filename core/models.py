@@ -27,4 +27,5 @@ Base.metadata.create_all(bind=criar_engine()[0])
 
 def buscar_usuario_por_email(email: str):
     session = criar_engine()[1]
-    # usuario = session.scalars(select)
+    usuario = session.scalars(select(User).where(User.email == email)).first()
+    return usuario

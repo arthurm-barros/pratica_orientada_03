@@ -1,3 +1,11 @@
+<a href="{{ url_for('listar_livros') }}">Livros</a>
+{% if usuario %}
+    <a href="{{ url_for('logout') }}">Sair</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Entrar</a>
+    <a href="{{ url_for('new_user') }}">Cadastrar-se</a>
+{% endif %}
+
 <title>
     {% block title %}
     {% endblock %}
