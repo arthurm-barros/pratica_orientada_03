@@ -61,25 +61,21 @@ def new_book():
 
     if request.method == "POST":
         titulo = request.form.get("titulo")
-        user_id = request.form.get("user_id")
 
         if not titulo:
             flash('Insira um título para cadastrar o livro.', 'erro')
             redirect(url_for('new_book'))
-        if not user_id:
-            flash('Informe um usuário para cadastrar o livro.', 'erro')
-            redirect(url_for('new_book'))
 
-        session = SessionLocal()
-        livro = session.scalars(select(Book).where(Book.titulo == titulo)).first()
+        _session = criar_engine()[1]
+        livro = _session.scalars(select(Book).where(Book.titulo == titulo)).first()
         if livro:
             flash('Já existe um livro com este título.', 'erro')
             return redirect(url_for('new_book'))
 
-        livro_novo = Book(titulo=titulo, user_id=int(user_id))
-        session.add(livro_novo)
-        session.commit()
-        return redirect(url_for("cadastro_livro"))
+        livro_novo = Book(titulo=titulo, usuario_id=int(session['usuario_id']))
+        _session.add(livro_novo)
+        _session.commit()
+        return redirect(url_for("new_book"))
 
     return render_template("book_form.html", usuario=session['usuario_nome'])
 

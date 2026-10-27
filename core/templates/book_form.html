@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro de livro{% endblock %}
+
+{% block content %}
+    <h2>Cadastrar livro</h2>
+
+    <form method="post">
+        <label for="titulo">Título do livro:</label>
+        <input type="text" id="titulo" name="titulo" required>
+
+        <br><br>
+
+        <button type="submit">Cadastrar livro</button>
+    </form>
+
+{% endblock %}
