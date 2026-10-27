@@ -12,7 +12,10 @@ def index():
     _session = criar_engine()[1]
     usuarios = _session.scalars(select(User)).all()
     livros = _session.scalars(select(Book)).all()
-    return render_template('index.html')
+    try:
+        return render_template('index.html', usuario=session['usuario_nome'])
+    except KeyError:
+        return render_template('index.html')
 
 @app.route("/usuario/novo", methods=["POST","GET"])
 def new_user():
