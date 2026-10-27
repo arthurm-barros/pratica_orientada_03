@@ -134,3 +134,4 @@ def login():
 def logout():
     session.pop('usuario_nome')
     session.pop('usuario_id')
+    return redirect(url_for('login'))
